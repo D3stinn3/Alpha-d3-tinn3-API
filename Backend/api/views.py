@@ -7,8 +7,13 @@ from django.http import JsonResponse
 def api_nyumbani(request, *args, **kwargs):
     body = request.body
     try:
-        data = json.loads
+        # turning json loads into python dicts
+        data = {}
+        data = json.loads(body)
+        print(data)
     except:
         pass
-    print(data.keys)
-    return JsonResponse({"message": "Hi there!"})
+    print(data)
+    
+    data["headers"] = dict(request.headers)
+    return JsonResponse(data)
