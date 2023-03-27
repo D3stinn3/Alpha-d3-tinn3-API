@@ -22,7 +22,7 @@ class Product(models.Model):
             return f"{_context} is a Senior"
     
     def get_discount(self):
-        the_discount = float(self.sale_price * 0.2)
+        the_discount = float(self.sale_price) * 0.2
         return the_discount
     
     def get_offer(self):
