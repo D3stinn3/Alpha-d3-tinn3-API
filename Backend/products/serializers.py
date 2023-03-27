@@ -2,8 +2,8 @@ from rest_framework import serializers
 from .models import Product
 
 class ProductSerializer(serializers.ModelSerializer):
-    discount_yangu = serializers.SerializerMethodField(read_only=True)
-    offer_yangu = serializers.SerializerMethodField(read_only=True)
+    my_discount = serializers.SerializerMethodField(read_only=True)
+    my_offer = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Product
         fields = [
@@ -13,20 +13,20 @@ class ProductSerializer(serializers.ModelSerializer):
             "price",
             "sale_price",
             "context_breakdown",
-            "discount_yangu",
-            "offer_yangu",
+            "my_discount",
+            "my_offer",
         ]
         
-        def get_discount_yangu(self, obj):
+    def get_my_discount(self, obj):
             return obj.get_discount()
         
-        def get_offer_yangu(self, obj):
+    def get_my_offer(self, obj):
             return obj.get_offer()
         
         
 class PrimaryProductSerializer(serializers.ModelSerializer):
-    discount_yangu = serializers.SerializerMethodField(read_only=True)
-    offer_yangu = serializers.SerializerMethodField(read_only=True)
+    my_discount = serializers.SerializerMethodField(read_only=True)
+    my_offer = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Product
         fields = [
@@ -36,17 +36,17 @@ class PrimaryProductSerializer(serializers.ModelSerializer):
             "price",
             "sale_price",
             "context_breakdown",
-            "discount_yangu",
-            "offer_yangu",
+            "my_discount",
+            "my_offer",
         ]
         
-        def get_discount_yangu(self, obj):
+        def get_my_discount(self, obj):
             try:
                 return obj.get_discount()
             except:
                 return None
             
-        def get_offer_yangu(self, obj):
+        def get_my_offer(self, obj):
             try:
                 return obj.get_offer()
             except:

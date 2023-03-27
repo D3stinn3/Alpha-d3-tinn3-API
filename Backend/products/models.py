@@ -23,7 +23,7 @@ class Product(models.Model):
     
     def get_discount(self):
         the_discount = self.sale_price
-        return the_discount
+        return "122"
     
     def get_offer(self):
         the_overall_offer = float(self.price)
