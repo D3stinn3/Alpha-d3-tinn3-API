@@ -17,13 +17,13 @@ class Product(models.Model):
         if _context.startswith("Grade"):
             return f"{_context} is a Grader"
         elif _context.startswith("Form"):
-            return f"{_context} is a Juniour Secondary"
+            return f"{_context} is a Junior Secondary"
         else:
             return f"{_context} is a Senior"
     
     def get_discount(self):
-        the_discount = self.sale_price
-        return "122"
+        the_discount = self.sale_price * 0.2
+        return the_discount
     
     def get_offer(self):
         the_overall_offer = float(self.price)
